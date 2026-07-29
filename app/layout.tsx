@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ServiceWorkerRegister from "./service-worker-register";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,11 +16,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Donnici Teams",
   description: "Gestión profesional de equipos de fútbol",
-  icons: {
-    icon: "/logo.png",
-    shortcut: "/logo.png",
-    apple: "/logo.png",
-  },
 };
 
 export default function RootLayout({
@@ -32,7 +28,8 @@ export default function RootLayout({
       lang="es"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#070b12] text-white">
+      <body className="min-h-full flex flex-col">
+        <ServiceWorkerRegister />
         {children}
       </body>
     </html>
